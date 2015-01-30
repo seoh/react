@@ -10,7 +10,7 @@ next: complementary-tools-ko-KR.html
 
 <iframe width="650" height="315" src="//www.youtube.com/embed/x7cQ3mrcKaY" frameborder="0" allowfullscreen></iframe>
 
-"페이스북과 인스타그램에서, 우리는 React 를 이용해 웹에서 벌어질 수 있는 한계를 뛰어넘으려 노력하고 있습니다. 저는 프레임워크의 짤막한 소개로 시작해서, 논쟁이 벌어질 수 있는 다음의 세가지 주제로 넘어갈겁니다. 템플릿의 개념을 버리고 Javascript 를 이용해 View 를 구축하기, 자료가 변할때 전체 어플리케이션을 다시 그리기(“re-rendering”), 그리고 DOM과 events의 경량화된 구현 입니다." -- [Pete Hunt](http://www.petehunt.net/)
+"페이스북과 인스타그램에서, 우리는 React 를 이용해 웹에서 벌어질 수 있는 한계를 뛰어넘으려 노력하고 있습니다. 저는 프레임워크에 대한 짤막한 소개로 시작해서, 논쟁이 벌어질 수 있는 다음의 세가지 주제로 넘어갈겁니다. 템플릿의 개념을 버리고 Javascript 를 이용해 View 를 구축하기, 자료가 변할때 전체 어플리케이션을 다시 그리기(“re-rendering”), 그리고 DOM과 events의 경량화된 구현 입니다." -- [Pete Hunt](http://www.petehunt.net/)
 
 ### Thinking in react - tagtree.tv
 
@@ -22,12 +22,12 @@ next: complementary-tools-ko-KR.html
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/h3KksH8gfcQ" frameborder="0" allowfullscreen></iframe>
 
-"이번에는 왜 우리가 virtual DOM을 만들었는지, 이것이 다른 시스템들과는 어떻게 다른지, 그리고 브라우져 기술들의 미래와 어떠한 관련성이 있는지에 대해서 이야기 해 볼 겁니다." -- [Pete Hunt](http://www.petehunt.net/)
+"이번에는 왜 우리가 virtual DOM을 만들었는지, 이것이 다른 시스템들과는 어떻게 다른지, 그리고 브라우져 기술들의 미래와 어떻게 관련이 있는지에 대해서 이야기 해 볼 겁니다." -- [Pete Hunt](http://www.petehunt.net/)
 
 
 ### Going big with React
 
-"이 발표에서, 이 모든 JS 프레임워크가 다음을 약속하는것처럼 보입니다: 꺠끗한 구현들, 빠른 코드 디자인, 완전한 수행. 그런데 당신이 Javascript 스트레스 테스트를 할때, 어떤 일이 발생합니까? 혹은 6MB의 코드를 던지면 무슨일이 발생합니까? 이번에는 높은 스트레스 환경에서 리액트가 어떻게 작동하는지, 그리고 이것이 우리 팀이 방대한 크기의 코드를 안전하게 구성하는데 어떻게 도움이 되어줄지를 조사해 볼겁니다."  
+"이 발표에서, 이 모든 JS 프레임워크가 다음을 약속하는것처럼 보입니다: 꺠끗한 구현들, 빠른 코드 디자인, 완전한 수행. 그런데 당신이 Javascript 스트레스 테스트를 할때, 어떤 일이 발생합니까? 혹은 6MB의 코드를 던지면 무슨일이 발생합니까? 이번에는 높은 스트레스 환경에서 React가 어떻게 작동하는지, 그리고 이것이 우리 팀이 방대한 크기의 코드를 안전하게 구성하는데 어떻게 도움이 되어줄지를 조사해 볼겁니다."  
 [![](https://i.vimeocdn.com/video/481670116_650.jpg)](https://skillsmatter.com/skillscasts/5429-going-big-with-react#video)
 
 ### CodeWinds
@@ -99,7 +99,7 @@ By [Tom Occhino](http://tomocchino.com/), [Jordan Walke](https://github.com/jord
 ### Backbone + React + Middleman Screencast
 <iframe width="650" height="315" src="//www.youtube.com/embed/iul1fWHVU6A" frameborder="0" allowfullscreen></iframe>
 
-Backbone 은 React로 REST API를 제공하기 위한 아주 좋은 방법입니다. 이 화면중개는 [Backbone-React-Component](https://github.com/magalhas/backbone-react-component)을 이용해서 어떻게 이 두가지를 병합하는지 보여줍니다. Middleman 은 이 예제에서 사용되는 프레임워크이지만, 쉽게 다른 프레임워크로 대체하실 수 있습니다. 지원되는 템플릿 은 [이곳](https://github.com/jbhatab/middleman-backbone-react-template)에서 찾으실 수 있습니다. -- [열린 마음의 혁명들](http://www.openmindedinnovations.com/)
+Backbone은 React로 REST API를 제공하기 위한 아주 좋은 방법입니다. 이 화면중개는 [Backbone-React-Component](https://github.com/magalhas/backbone-react-component)을 이용해서 어떻게 이 두가지를 병합하는지 보여줍니다. Middleman은 이 예제에서 사용되는 프레임워크이지만, 쉽게 다른 프레임워크로 대체하실 수 있습니다. 지원되는 템플릿은 [이곳](https://github.com/jbhatab/middleman-backbone-react-template)에서 찾으실 수 있습니다. -- [열린 마음의 혁명들](http://www.openmindedinnovations.com/)
 
 ### Developing User Interfaces With React - Super VanJS
 
