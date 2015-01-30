@@ -131,16 +131,17 @@ product 들의 원본 리스트는 props를 통해서 전달되기 때문에, st
 
 <iframe width="100%" height="300" src="http://jsfiddle.net/reactjs/n47gckhr/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-So far we've built an app that renders correctly as a function of props and state flowing down the hierarchy. Now it's time to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
+앞서 우리는 계층적으로 아랫방향 흐름의 props, state전달로 잘 동작하는 어플리케이션을 만들었습니다. 이제 다른방향의 자료 흐름을 지원할 시간입니다: form 구성요소들은 `FilterableProductTable`의 state를 업데이트할 필요성이 있죠.
 
-React makes this data flow explicit to make it easy to understand how your program works, but it does require a little more typing than traditional two-way data binding. React provides an add-on called `ReactLink` to make this pattern as convenient as two-way binding, but for the purpose of this post we'll keep everything explicit.
+React는 어떻게 이 프로그램이 동작하는지 이해하기 쉽게 이 자료의 흐름을 명쾌하도록 만들어주지만 전통적인 두 방향의 자료 바인딩보다 많은 일을 해야할 필요는 없습니다. React는 `ReactLink`라고 불리는 부가기능을 제공합니다. 명쾌하고 간단하게 이 패턴을 만들어줍니다.
 
 If you try to type or check the box in the current version of the example you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+지금 예제에 문자열을 입력하거나 체크박스를 체크하더라도 React가 입력을 무시하는것을 볼 수 있습니다. 의도적으로 `input`의 prop에 `value`를 세팅하면 항상 `state`가 `FilterableProductTable`로부터 전달되어야 합니다.
 
-Let's think about what we want to happen. We want to make sure that whenever the user changes the form we update the state to reflect the user input. Since components should only update their own state, `FilterableProductTable` will pass a callback to `SearchBar` that will fire whenever the state should be updated. We can use the `onChange` event on the inputs to be notified of it. And the callback passed by `FilterableProductTable` will call `setState()` and the app will be updated.
+우리가 원하는게 뭔지 생각해 봅시다. 사용자가 form을 바꿀때마다 사용자 입력을 반영하기 위해 업데이트 하기를 원하죠. 구성요소들이 오직 자기 자신의 state만 업데이트 하더라도 `FilterableProductTable`은 state가 변할때마다 반영되어야할 `SearchBar`에 콜백을 전달할것입니다. 이 알림을 위해서 `onChange`이벤트를 사용할 수 있습니다. 그리고 `FilterableProductTable`으로부터 전달된 콜백은 `setState()`를 호출할 것이고, 어플리케이션은 업데이트 될겁니다.
 
-Though this sounds like a lot it's really just a few lines of code. And it's really explicit how your data is flowing throughout the app.
+듣기에는 휘황찬란한것 같지만, 실제로는 적은량의 코드입니다. 그리고 실제로 어플리케이션을 통해 자료가 흐릅니다.
 
-## And that's it
+## 그리고
 
 Hopefully this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you're used to, remember that code is read far more than it's written, and it's extremely easy to read this modular, explicit code. As you start to build large libraries of components you'll appreciate this explicitness and modularity, and with code reuse your lines of code will start to shrink :)
