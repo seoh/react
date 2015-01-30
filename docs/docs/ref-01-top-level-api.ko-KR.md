@@ -76,7 +76,7 @@ ReactComponent render(
 boolean unmountComponentAtNode(DOMElement container)
 ```
 
-DOM에 마운트된 React 컴포넌트를 제거하고 이벤트 핸들러 및 상태를 정리합니다. 컨테이너에 마운트된 컴포넌트가 없는 경우에는 호출해도 아무 동작을 하지 않습니다. 컴포넌트가 마운트 해제된 경우 `true`를, 마운트 해제할 컴포넌트가 없으면 `false`를 리턴합니다.
+DOM에 마운트된 React 컴포넌트를 제거하고 이벤트 핸들러 및 state를 정리합니다. 컨테이너에 마운트된 컴포넌트가 없는 경우에는 호출해도 아무 동작을 하지 않습니다. 컴포넌트가 마운트 해제된 경우 `true`를, 마운트 해제할 컴포넌트가 없으면 `false`를 리턴합니다.
 
 
 ### React.renderToString
