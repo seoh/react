@@ -72,62 +72,62 @@ React의 많은 뛰어난 점들중 하나는 당신이 생각을 하면서 어�
 
 이 단계를 진행하는데 도움이 필요하시다면, [React 문서](http://facebook.github.io/react/docs/)를 참조하세요.
 
-### A brief interlude: props vs state
+### 잠시동안: props vs state
 
-There are two types of "model" data in React: props and state. It's important to understand the distinction between the two; skim [the official React docs](http://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html) if you aren't sure what the difference is.
+React 에는 두가지 타입의 자료 "모델"이 있습니다: props 와 state. 두가지의 구분점을 이해하는데 매우 중요합니다; 혹시 차이점을 확신하지 못한다면 걷어내세요 [공식 문서](http://facebook.github.io/react/docds/interactivity-and-dynamic-uis.html).
 
-## Step 3: Identify the minimal (but complete) representation of UI state
+## 3단계: UI state 의 표현을 작지만 완전하도록 확인하세요.
 
-To make your UI interactive you need to be able to trigger changes to your underlying data model. React makes this easy with **state**.
+상호적인 UI를 만들기 위해서는 자료 모델 변화에 반응할 수 있어야 합니다. React는 **state**로 이걸 쉽게 만들어주죠.
 
-To build your app correctly you first need to think of the minimal set of mutable state that your app needs. The key here is DRY: *Don't Repeat Yourself*. Figure out what the absolute minimal representation of the state of your application needs to be and compute everything else you need on-demand. For example, if you're building a TODO list, just keep an array of the TODO items around; don't keep a separate state variable for the count. Instead, when you want to render the TODO count simply take the length of the TODO items array.
+올바르게 어플리케이션을 만들기 위해서는 첫째로 어플리케이션에 필요한 변할 수 있는 state 들의 최소한의 집합에 대해서 생각해볼 필요가 있습니다. 여기 방법이 있습니다: *스스로 반복하지 마세요*. 무엇이 가장 작은 state 일지 그려보세요, 필요하다면 다른 모든것들을. 예를들어 TODO 리스트를 만든다고 칩시다. TODO 아이템들의 배열만 유지하세요; 갯수를 표현하기 위한 state 변수를 분리하지 마세요. 대신 TODO 아이템들 배열의 길이를 이용하세요.
 
-Think of all of the pieces of data in our example application. We have:
+예제 어플리케이션에서의 모든 자료유형에 대해 생각해 봅시다:
 
-  * The original list of products
-  * The search text the user has entered
-  * The value of the checkbox
-  * The filtered list of products
+  * product 들의 원본 리스트
+  * 사용자가 입력한 검색어
+  * 체크박스의 값
+  * product 들의 걸러진 리스트
 
-Let's go through each one and figure out which one is state. Simply ask three questions about each piece of data:
+어느것이 state 가 될지 따져봅시다. 간단하게 각 자료에 대해 세가지만 생각해 보세요.
 
-  1. Is it passed in from a parent via props? If so, it probably isn't state.
-  2. Does it change over time? If not, it probably isn't state.
-  3. Can you compute it based on any other state or props in your component? If so, it's not state.
+  1. 만약 부모로부터 props 를 이용해 전달됩니까? 그렇다면 이건 state가 아닙니다.
+  2. 종종 바뀝니까? 아니라면 이것 역시 state가 아닙니다.
+  3. 구성요소에 있는 다른 state나 props를 통해서 계산되어질 수 있습니까? 역시 state가 아닙니다.
 
-The original list of products is passed in as props, so that's not state. The search text and the checkbox seem to be state since they change over time and can't be computed from anything. And finally, the filtered list of products isn't state because it can be computed by combining the original list of products with the search text and value of the checkbox.
+product 들의 원본 리스트는 props를 통해서 전달되기 때문에, state가 아닙니다. 검색어와 체크박스의 값은 다른것에 의해 계산될 수 있는 값이 아니고, 시시각각 변하기때문에 state가 맞습니다. 마지막으로 product 들의 걸러진 리스트 역시 state가 아닙니다. 원본 리스트와 검색어, 체크박스의 값등에 의해 연산되어지는 값이기 때문이죠.
 
-So finally, our state is:
+결국, state는 다음과 같습니다:
 
-  * The search text the user has entered
-  * The value of the checkbox
+  * 사용자가 입력한 검색어
+  * 체크박스의 값
 
-## Step 4: Identify where your state should live
+## 4단계: 어디서 state가 유지되어야 하는지 확인하세요.
 
 <iframe width="100%" height="300" src="http://jsfiddle.net/reactjs/zafjbw1e/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-OK, so we've identified what the minimal set of app state is. Next we need to identify which component mutates, or *owns*, this state.
+이제 최소한의 state가 무엇인지 알아 내었습니다. 다음은 어떤 구성요소가 이 state를 변형하거나 만들어 낼지 알아내야합니다.
 
-Remember: React is all about one-way data flow down the component hierarchy. It may not be immediately clear which component should own what state. **This is often the most challenging part for newcomers to understand,** so follow these steps to figure it out:
+기억하세요: React는 계층적 아래 구성요소로만 향하는 단일방향성 자료 흐름을 가집니다. 지금당장은 어떤 구성요소가 자기 자신의 state를 가져야 할지 명확하지 않을겁니다. **이것이 처음 접하는 사람이 가장 이해하기 어려운 부분입니다**. 이제 명확히 하기 위해 다음을 따라봅시다:
 
-For each piece of state in your application:
+어플리케이션에서 state의 경우:
 
-  * Identify every component that renders something based on that state.
-  * Find a common owner component (a single component above all the components that need the state in the hierarchy).
-  * Either the common owner or another component higher up in the hierarchy should own the state.
-  * If you can't find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
+  * 모든 구성요소가 state를 통해 무언가를 그려냅니다.
+  * 대표 구성요소가 뭔지 찾으세요 (계층적으로 다른 구성요소들의 단일 상위 구성요소는 state를 가질 필요가 있습니다).
+  * 대표 구성요소 혹은 또다른 구성요소는 가능한 상위의 구성요소가 state를 소유해야합니다.
+  * 만약 state를 가져야할 구성요소가 어느것인지 모르겠으면, 새로운 구성요소를 만들어 state를 부여하고 기존의 대표 구성요소 위에 추가하세요.
 
-Let's run through this strategy for our application:
+이 전략을 우리 어플리케이션에 적용해 봅시다.
 
-  * `ProductTable` needs to filter the product list based on state and `SearchBar` needs to display the search text and checked state.
-  * The common owner component is `FilterableProductTable`.
-  * It conceptually makes sense for the filter text and checked value to live in `FilterableProductTable`
+  * `ProductTable`은 state에 대해 걸러질 필요가 있고, `SearchBar` 역시 검색어 state와 체크박스 state를 보여줄 필요가 있습니다.
+  * 대표 구성요소는 `FilterableProductTable` 입니다.
+  * 개념적으로 검색어와 체크박스 값은 `FilterableProductTable`에 있어야 한다는게 명확합니다.
 
-Cool, so we've decided that our state lives in `FilterableProductTable`. First, add a `getInitialState()` method to `FilterableProductTable` that returns `{filterText: '', inStockOnly: false}` to reflect the initial state of your application. Then pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as a prop. Finally, use these props to filter the rows in `ProductTable` and set the values of the form fields in `SearchBar`.
+좋습니다. state를 `FilterableProductTable`에서 관리하도록 결정했습니다. 먼저 `getInitialState()` 메서드를 `FilterableProductTable`에 추가하세요. 이 메서드는 어플리케이션의 초기 state를 갖도록 `{filterText: '', inStockOnly: false}`를 반환하면 됩니다. 그리고 `filterText`와 `inStockOnly` 를 `ProductTable`과 `SearchBar`에 prop으로 전달하세요. 마지막으로 이 prop들을 `ProductTable`을 걸러내는데, 그리고 `SearchBar` form fields의 값을 세팅하는데 사용하세요. 
 
-You can start seeing how your application will behave: set `filterText` to `"ball"` and refresh your app. You'll see the data table is updated correctly.
+이제 어떻게 어플리케이션이 동작하는지 볼 수 있습니다: `filterText`를 `"ball"`로 설정하고 갱신합니다. 자료 테이블이 제대로 업데이트 되는것을 볼 수 있을겁니다.
 
-## Step 5: Add inverse data flow
+## 5단계: 반댓방향 자료 흐름을 추가하세요.
 
 <iframe width="100%" height="300" src="http://jsfiddle.net/reactjs/n47gckhr/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
