@@ -17,9 +17,7 @@ redirect_from: "/docs/reference.ko-KR.html"
 ReactClass createClass(object specification)
 ```
 
-주어진 명세에 따라 컴포넌트 클래스를 만듭니다. 컴포넌트는 단 하나의 자식만을 리턴하는 `render` 메소드를 구현합니다. 그 자식은 임의 깊이의 자식 구조를 가질 수 있습니다.
-<!-- 이 다음 줄은 원래 문서가 outdated 된 내용 같군요... -->
-컴포넌트가 일반적인 프로토타입 기반의 클래스와 다른 점은 생성할 때 `new` 연산자를 사용하지 않아도 된다는 것입니다. 컴포넌트는 (`new` 연산자를 통해) 내부 인스턴스를 만들어 주는 편의 래퍼(wrapper)입니다.
+주어진 명세에 따라 컴포넌트 클래스를 만듭니다. 컴포넌트는 단 하나의 자식만을 리턴하는 `render` 메소드를 구현합니다. 그 자식은 임의 깊이의 자식 구조를 가질 수 있습니다. 컴포넌트가 일반적인 프로토타입 기반의 클래스와 다른 점은 생성할 때 `new` 연산자를 사용하지 않아도 된다는 것입니다. 컴포넌트는 (`new` 연산자를 통해) 내부 인스턴스를 만들어 주는 편의 래퍼(wrapper)입니다.
 
 명세 객체에 대한 자세한 정보는 [컴포넌트 명세와 생명주기](/react/docs/component-specs.ko-KR.html)를 참고하세요.
 
@@ -87,7 +85,7 @@ string renderToString(ReactElement element)
 
 주어진 ReactElement의 최초 HTML을 렌더링합니다. 이 함수는 서버에서만 사용해야 합니다. React가 HTML 문자열을 리턴합니다. HTML을 서버에서 생성하고 마크업을 최초 요청에 내려보내서, 페이지 로딩을 빠르게 하거나 검색 엔진이 크롤링할 수 있도록 하는 SEO 목적으로 이 메소드를 사용할 수 있습니다.
 
-또한 이 메소드로 서버에서 렌더링한 마크업을 포함한 노드에 `React.render()`를 호출하면, React는 마크업을 보존하고 이벤트 핸들러만 붙이므로 매우 빠른 최초 로딩 경험이 가능해집니다.
+또한 이 메소드로 서버에서 렌더링한 마크업을 포함한 노드에 `React.render()`를 호출하면, React는 마크업을 보존하고 이벤트 핸들러만 붙이므로 최초 로딩을 매우 빠르게 느껴지게 할 수 있습니다.
 
 
 ### React.renderToStaticMarkup
@@ -96,7 +94,7 @@ string renderToString(ReactElement element)
 string renderToStaticMarkup(ReactElement element)
 ```
 
-`renderToString`와 비슷하지만 `data-react-id`처럼 React에서 내부적으로 사용하는 추가적인 DOM 어트리뷰트를 만들지 않습니다. 추가적인 어트리뷰트를 제거하면 용량을 줄일 수 있기 때문에 React를 단순한 정적 페이지 생성기로 사용할 때 유용합니다.
+`renderToString`와 비슷하지만 `data-react-id`처럼 React에서 내부적으로 사용하는 추가적인 DOM 어트리뷰트를 만들지 않습니다. 추가적인 어트리뷰트를 제거하면 생성되는 마크업의 용량을 줄일 수 있기 때문에 React를 단순한 정적 페이지 생성기로 사용할 때 유용합니다.
 
 
 ### React.isValidElement
